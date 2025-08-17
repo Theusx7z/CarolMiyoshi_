@@ -40,7 +40,6 @@
             transition: background-image 1s ease-in-out;
         }
         
-        /* Layout Mobile */
         .mobile-container {
             display: flex;
             flex-direction: column;
@@ -142,6 +141,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: opacity 0.5s ease;
         }
         
         .image-caption {
@@ -154,6 +154,7 @@
             padding: 10px;
             text-align: center;
             font-size: 0.9rem;
+            transition: opacity 0.5s ease;
         }
         
         /* Galeria */
@@ -179,6 +180,7 @@
         .gallery-item.active {
             border-color: var(--primary);
             transform: scale(1.05);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
         
         .gallery-item img {
@@ -206,18 +208,18 @@
         
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
         }
         
         .social-link {
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             transition: transform 0.3s ease;
         }
         
         .social-link:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
         
         .footer-links {
@@ -225,12 +227,14 @@
             flex-wrap: wrap;
             gap: 15px;
             justify-content: center;
+            margin: 15px 0;
         }
         
         .footer-link {
             color: white;
             text-decoration: none;
             transition: opacity 0.3s ease;
+            font-weight: 500;
         }
         
         .footer-link:hover {
@@ -239,13 +243,57 @@
         }
         
         .copyright {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 15px;
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 20px;
         }
-     
-        .instagram-btn i {
-            margin-right: 8px;
+        
+        /* Grid de Fotos */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .photo-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            height: 150px;
+            position: relative;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .patrocinadores-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .patrocinador-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .patrocinador-logo {
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 10px;
         }
         
         /* Animações */
@@ -255,32 +303,19 @@
         }
         
         .fade-in {
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.5s ease-out forwards;
         }
         
-        /* Estilo para galeria expandida de prêmios */
-        .premiacao-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .premiacao-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            height: 150px;
-        }
-        
-        .premiacao-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .hidden-section {
+            display: none !important;
         }
         
         @media (min-width: 480px) {
-            .premiacao-grid {
+            .photo-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .patrocinadores-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
@@ -302,76 +337,202 @@
         <nav class="mobile-nav">
             <button class="nav-btn active" data-section="home">Início</button>
             <button class="nav-btn" data-section="provas">Provas</button>
-            <button class="nav-btn" data-section="premiacao">Prêmios</button>
+            <button class="nav-btn" data-section="premios">Prêmios</button>
             <button class="nav-btn" data-section="galeria">Galeria</button>
-            <button class="nav-btn" data-section="contato">Contato</button>
+            <button class="nav-btn" data-section="patrocinadores">Patrocinadores</button>
         </nav>
         
         <!-- Conteúdo Principal -->
         <main class="mobile-content">
-            <h2 class="section-title fade-in" id="current-title">Carol Miyoshi</h2>
-            <p class="section-description fade-in" id="current-description">
-                A paixão pelos cavalos e competições impulsiona Carol a superar limites em provas de 3 tambores.
-            </p>
-            
-            <div class="main-image-container">
-                <img src="https://placehold.co/600x400" alt="Carol Miyoshi competindo" class="main-image fade-in" id="main-image">
-                <div class="image-caption fade-in" id="image-caption">Campeonato Paulista 2023</div>
-            </div>
-            
-            <div class="mobile-gallery">
-                <div class="gallery-item active" data-index="0">
-                    <img src="https://placehold.co/200" alt="Competição">
-                </div>
-                <div class="gallery-item" data-index="1">
-                    <img src="https://placehold.co/200" alt="Premiação">
-                </div>
-                <div class="gallery-item" data-index="2">
-                    <img src="https://placehold.co/200" alt="Treino">
-                </div>
-                <div class="gallery-item" data-index="3">
-                    <img src="https://placehold.co/200" alt="Cavalo">
-                </div>
-                <div class="gallery-item" data-index="4">
-                    <img src="https://placehold.co/200" alt="Equipe">
-                </div>
-            </div>
+            <!-- Seção Início -->
+            <div id="home-section" class="content-section">
+                <h2 class="section-title fade-in">Carol Miyoshi</h2>
+                <p class="section-description fade-in">
+                    A paixão pelos cavalos e competições impulsiona Carol a superar limites em provas de 3 tambores.
+                </p>
                 
-        <!-- Seção de Prêmios com 60 fotos -->
-            <div id="premiacao-content" style="display:none;">
-                <div class="premiacao-grid">
-                    <!-- 60 imagens de premiação -->
-                    <div class="premiacao-item">
-                        <img src="https://placehold.co/300x200" alt="Troféu de Campeã Brasileira 2023">
+                <div class="main-image-container">
+                    <img src="https://placehold.co/600x400" alt="Carol Miyoshi competindo" class="main-image fade-in" id="home-main-image">
+                    <div class="image-caption fade-in" id="home-caption">Campeonato Paulista 2023</div>
+                </div>
+                
+                <div class="mobile-gallery" id="home-gallery">
+                    <div class="gallery-item active" data-index="0">
+                        <img src="https://placehold.co/200" alt="Carol competindo">
                     </div>
-                    <div class="premiacao-item">
-                        <img src="https://placehold.co/300x200" alt="Circuito Nacional 2022">
+                    <div class="gallery-item" data-index="1">
+                        <img src="https://placehold.co/200" alt="Carol treinando">
                     </div>
-                    <div class="premiacao-item">
-                        <img src="https://placehold.co/300x200" alt="GP Internacional 2021">
+                    <div class="gallery-item" data-index="2">
+                        <img src="https://placehold.co/200" alt="Carol com cavalo">
                     </div>
-                    <div class="premiacao-item">
-                        <img src="https://placehold.co/300x200" alt="Copa Sudeste 2020">
+                    <div class="gallery-item" data-index="3">
+                        <img src="https://placehold.co/200" alt="Carol premiada">
                     </div>
-                    <div class="premiacao-item">
-                        <img src="https://placehold.co/300x200" alt="Campeonato Paulista 2019">
+                </div>
+            </div>
+            
+            <!-- Seção Provas -->
+            <div id="provas-section" class="content-section hidden-section">
+                <h2 class="section-title fade-in">Provas</h2>
+                <p class="section-description fade-in">
+                    25 momentos marcantes da carreira de Carol nas provas de 3 tambores.
+                </p>
+                
+                <div class="main-image-container">
+                    <img src="https://placehold.co/600x400?text=Prova+Destaque" class="main-image fade-in" id="provas-main-image">
+                    <div class="image-caption fade-in" id="provas-caption">Circuito Nacional 2023</div>
+                </div>
+                
+                <div class="photo-grid">
+                    <!-- 25 fotos de provas -->
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prova+1" alt="Prova 1">
                     </div>
-                    <div class="premiacao-item">
-                        <img src="https://placehold.co/300x200" alt="Troféu Velocidade 2018">
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prova+2" alt="Prova 2">
                     </div>
-                    <div class="premiacao-item">
-                        <img src="https://placehold.co/300x200" alt="Circuito Brasileiro 2017">
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prova+3" alt="Prova 3">
                     </div>
-                    <div class="premiacao-item">
-                        <img src="https://placehold.co/300x200" alt="GP Interlagos 2016">
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prova+4" alt="Prova 4">
                     </div>
-                    <div class="premiacao-item">
-                        <img src="https://placehold.co/300x200" alt="Troféu Ouro 2015">
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prova+5" alt="Prova 5">
                     </div>
-                    <div class="premiacao-item">
-                        <img src="https://placehold.co/300x200" alt="Campeonato Nacional 2014">
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prova+6" alt="Prova 6">
                     </div>
-                    <!-- Adicione mais 50 imagens seguindo o mesmo padrão -->
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prova+7" alt="Prova 7">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prova+8" alt="Prova 8">
+                    </div>
+                    <!-- Adicione mais 17 fotos de provas -->
+                </div>
+            </div>
+            
+            <!-- Seção Prêmios -->
+            <div id="premios-section" class="content-section hidden-section">
+                <h2 class="section-title fade-in">Prêmios</h2>
+                <p class="section-description fade-in">
+                    60 prêmios conquistados por Carol ao longo de sua carreira.
+                </p>
+                
+                <div class="main-image-container">
+                    <img src="https://placehold.co/600x400?text=Principal+Prêmio" class="main-image fade-in" id="premios-main-image">
+                    <div class="image-caption fade-in" id="premios-caption">Campeonato Brasileiro 2023</div>
+                </div>
+                
+                <div class="photo-grid">
+                    <!-- 60 fotos de prêmios -->
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prêmio+1" alt="Prêmio 1">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prêmio+2" alt="Prêmio 2">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prêmio+3" alt="Prêmio 3">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prêmio+4" alt="Prêmio 4">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prêmio+5" alt="Prêmio 5">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prêmio+6" alt="Prêmio 6">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prêmio+7" alt="Prêmio 7">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Prêmio+8" alt="Prêmio 8">
+                    </div>
+                    <!-- Adicione mais 52 fotos de prêmios -->
+                </div>
+            </div>
+            
+            <!-- Seção Galeria -->
+            <div id="galeria-section" class="content-section hidden-section">
+                <h2 class="section-title fade-in">Galeria</h2>
+                <p class="section-description fade-in">
+                    35 momentos especiais da trajetória de Carol Miyoshi.
+                </p>
+                
+                <div class="main-image-container">
+                    <img src="https://placehold.co/600x400?text=Momento+Destaque" class="main-image fade-in" id="galeria-main-image">
+                    <div class="image-caption fade-in" id="galeria-caption">Evento especial 2023</div>
+                </div>
+                
+                <div class="photo-grid">
+                    <!-- 35 fotos da galeria -->
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Galeria+1" alt="Galeria 1">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Galeria+2" alt="Galeria 2">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Galeria+3" alt="Galeria 3">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Galeria+4" alt="Galeria 4">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Galeria+5" alt="Galeria 5">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Galeria+6" alt="Galeria 6">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Galeria+7" alt="Galeria 7">
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://placehold.co/300x200?text=Galeria+8" alt="Galeria 8">
+                    </div>
+                    <!-- Adicione mais 27 fotos da galeria -->
+                </div>
+            </div>
+            
+            <!-- Seção Patrocinadores -->
+            <div id="patrocinadores-section" class="content-section hidden-section">
+                <h2 class="section-title fade-in">Patrocinadores</h2>
+                <p class="section-description fade-in">
+                    Conheça nossos parceiros e saiba como fazer parte deste time.
+                </p>
+                
+                <div class="main-image-container">
+                    <img src="https://placehold.co/600x400?text=Patrocínio" class="main-image fade-in">
+                    <div class="image-caption fade-in">Nossos patrocinadores</div>
+                </div>
+                
+                <div class="patrocinadores-grid">
+                    <div class="patrocinador-item">
+                        <img src="https://placehold.co/150x60?text=Logo+Patrocinador" alt="Patrocinador 1" class="patrocinador-logo">
+                        <h3>Patrocinador Ouro</h3>
+                        <p>Exemplo de pacote premium</p>
+                    </div>
+                    <div class="patrocinador-item">
+                        <img src="https://placehold.co/150x60?text=Logo+Patrocinador" alt="Patrocinador 2" class="patrocinador-logo">
+                        <h3>Patrocinador Prata</h3>
+                        <p>Exemplo de pacote intermediário</p>
+                    </div>
+                    <div class="patrocinador-item">
+                        <img src="https://placehold.co/150x60?text=Logo+Patrocinador" alt="Patrocinador 3" class="patrocinador-logo">
+                        <h3>Patrocinador Bronze</h3>
+                        <p>Exemplo de pacote básico</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md mt-6 max-w-md mx-auto">
+                    <h3 class="text-lg font-semibold" style="color: var(--primary);">Seja um Patrocinador</h3>
+                    <p class="mt-2">Entre em contato para conhecer nossas oportunidades:</p>
+                    <p class="mt-2"><i class="fas fa-envelope mr-2" style="color: var(--accent);"></i> patrocinio@carolmiyoshi.com.br</p>
+                    <p class="mt-2"><i class="fas fa-phone mr-2" style="color: var(--accent);"></i> (XX) XXXX-XXXX</p>
                 </div>
             </div>
         </main>
@@ -380,14 +541,11 @@
         <footer class="footer">
             <div class="footer-content">
                 <div class="social-links">
-                    <a href="https://instagram.com/carolmiyoshi" class="social-link" target="_blank">
+                    <a href="https://www.instagram.com/miyoshicaroline?igsh=anViaWF5anl5bHE2" class="social-link" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://facebook.com/carolmiyoshi" class="social-link" target="_blank">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://youtube.com/carolmiyoshi" class="social-link" target="_blank">
-                        <i class="fab fa-youtube"></i>
+                    <a href="https://tiktok.com/@carolmiyoshi" class="social-link" target="_blank">
+                        <i class="fab fa-tiktok"></i>
                     </a>
                     <a href="mailto:contato@carolmiyoshi.com.br" class="social-link">
                         <i class="fas fa-envelope"></i>
@@ -395,221 +553,128 @@
                 </div>
                 
                 <div class="footer-links">
-                    <a href="#" class="footer-link">Início</a>
-                    <a href="#" class="footer-link">Sobre</a>
-                    <a href="#" class="footer-link">Provas</a>
-                    <a href="#" class="footer-link">Galeria</a>
-                    <a href="#" class="footer-link">Contato</a>
-                    <a href="#" class="footer-link">Patrocinadores</a>
-                    <a href="#" class="footer-link">Privacidade</a>
+                    <a href="#home-section" class="footer-link">Início</a>
+                    <a href="#about" class="footer-link">Sobre</a>
+                    <a href="#provas-section" class="footer-link">Provas</a>
+                    <a href="#galeria-section" class="footer-link">Galeria</a>
+                    <a href="#patrocinadores-section" class="footer-link">Patrocinadores</a>
+                    <a href="#privacidade" class="footer-link">Privacidade</a>
                 </div>
                 
                 <div class="copyright">
-                    &copy; 2023 Carol Miyoshi - Todos os direitos reservados
+                    &copy; 2025 Carol Miyoshi - Todos os direitos reservados
                 </div>
             </div>
         </footer>
     </div>
 
     <script>
-        // Conteúdo para cada seção
-        const sections = {
-            home: {
-                title: "Carol Miyoshi",
-                description: "A paixão pelos cavalos e competições impulsiona Carol a superar limites em provas de 3 tambores.",
-                images: [
-                    { src: "https://placehold.co/600x400", alt: "Carol competindo", caption: "Campeonato Paulista 2023" },
-                    { src: "https://placehold.co/600x400", alt: "Treino", caption: "Preparação na fazenda" },
-                    { src: "https://placehold.co/600x400", alt: "Prêmio", caption: "Campeonato Brasileiro 2022" },
-                    { src: "https://placehold.co/600x400", alt: "Cavalo", caption: "Com seu cavalo Thunder" },
-                    { src: "https://placehold.co/600x400", alt: "Workshop", caption: "Ministrando workshop" }
-                ]
-            },
-            provas: {
-                title: "Provas de 3 Tambores",
-                description: "Carol domina as principais competições nacionais e internacionais com técnica e velocidade.",
-                images: [
-                    { src: "https://placehold.co/600x400", alt: "Circuito", caption: "Arena de competição" },
-                    { src: "https://placehold.co/600x400", alt: "Curva técnica", caption: "Movimento preciso" },
-                    { src: "https://placehold.co/600x400", alt: "Equipe", caption: "Preparação técnica" },
-                    { src: "https://placehold.co/600x400", alt: "Recorde", caption: "Novo tempo recorde" },
-                    { src: "https://placehold.co/600x400", alt: "Torcida", caption: "Fãs nas arquibancadas" }
-                ]
-            },
-            premiacao: {
-                title: "Premiação",
-                description: "Carol coleciona títulos nacionais e internacionais em sua trajetória vitoriosa. Veja algumas das mais de 60 premiações conquistadas:",
-                images: [
-                    { src: "https://placehold.co/600x400", alt: "Troféu", caption: "Campeã Brasileira" },
-                    { src: "https://placehold.co/600x400", alt: "Pódio", caption: "Circuito Sul-Americano" },
-                    { src: "https://placehold.co/600x400", alt: "Mundial", caption: "3° lugar no Mundial" },
-                    { src: "https://placehold.co/600x400", alt: "Revelação", caption: "Prêmio de técnica" },
-                    { src: "https://placehold.co/600x400", alt: "Hall da Fama", caption: "Reconhecimento" }
-                ]
-            },
-            galeria: {
-                title: "Galeria",
-                description: "Momentos marcantes da carreira de Carol Miyoshi no mundo equestre.",
-                images: [
-                    { src: "https://placehold.co/600x400", alt: "Início", caption: "Primeiras competições" },
-                    { src: "https://placehold.co/600x400", alt: "Estreia", caption: "Primeiro título" },
-                    { src: "https://placehold.co/600x400", alt: "Viagem", caption: "Preparação internacional" },
-                    { src: "https://placehold.co/600x400", alt: "Métodos", caption: "Treino inovador" },
-                    { src: "https://placehold.co/600x400", alt: "Fãs", caption: "Interação com público" }
-                ]
-            },
-            contato: {
-                title: "Contato",
-                description: "Para parcerias, convites ou informações sobre eventos:",
-                images: [
-                    { src: "https://placehold.co/600x400", alt: "Equipe", caption: "Nossa equipe" },
-                    { src: "https://placehold.co/600x400", alt: "Patrocinadores", caption: "Apoiadores" },
-                    { src: "https://placehold.co/600x400", alt: "Treinamento", caption: "Centro de treinos" },
-                    { src: "https://placehold.co/600x400", alt: "Palestras", caption: "Workshops" },
-                    { src: "https://placehold.co/600x400", alt: "Eventos", caption: "Ações sociais" }
-                ]
-            }
-        };
-        
-        // Elementos do DOM
-        const mainImage = document.getElementById('main-image');
-        const imageCaption = document.getElementById('image-caption');
-        const currentTitle = document.getElementById('current-title');
-        const currentDescription = document.getElementById('current-description');
-        const navBtns = document.querySelectorAll('.nav-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const premiacaoContent = document.getElementById('premiacao-content');
-        
-        // Estado atual
-        let currentSection = 'home';
-        let currentImageIndex = 0;
-        let autoRotateInterval;
-        
-        // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
-            updateSection('home');
-            startAutoRotate();
+            const navBtns = document.querySelectorAll('.nav-btn');
+            const contentSections = document.querySelectorAll('.content-section');
             
-            // Navegação
+            // Mostra a seção inicial
+            showSection('home');
+            startAutoRotation('home');
+            
+            // Configura os eventos de navegação
             navBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const section = this.getAttribute('data-section');
-                    navBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    updateSection(section);
+                    showSection(section);
+                    startAutoRotation(section);
                     window.scrollTo({top: 0, behavior: 'smooth'});
+                });
+            });
+            
+            // Configura os eventos da galeria
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const gallery = this.closest('.mobile-gallery');
+                    const sectionId = gallery.closest('.content-section').id.replace('-section', '');
                     
-                    // Mostrar/ocultar seção de premiação
-                    if (section === 'premiacao') {
-                        premiacaoContent.style.display = 'block';
-                    } else {
-                        premiacaoContent.style.display = 'none';
+                    // Remove ativo de todos os itens
+                    gallery.querySelectorAll('.gallery-item').forEach(i => i.classList.remove('active'));
+                    
+                    // Adiciona ativo ao item clicado
+                    this.classList.add('active');
+                    
+                    // Atualiza a imagem principal
+                    const mainImage = document.getElementById(`${sectionId}-main-image`);
+                    const caption = document.getElementById(`${sectionId}-caption`);
+                    
+                    if (mainImage && caption) {
+                        mainImage.src = this.querySelector('img').src;
+                        mainImage.alt = this.querySelector('img').alt;
+                    }
+                    
+                    // Reinicia a rotação automática
+                    stopAutoRotation(sectionId);
+                    setTimeout(() => startAutoRotation(sectionId), 10000);
+                });
+            });
+            
+            // Função para mostrar uma seção
+            function showSection(sectionId) {
+                // Atualiza os botões ativos
+                navBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-section') === sectionId) {
+                        btn.classList.add('active');
                     }
                 });
-            });
-            
-            // Mini galeria
-            galleryItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    currentImageIndex = index;
-                    updateCurrentImage();
-                    resetGalleryActiveStates();
-                    this.classList.add('active');
-                    stopAutoRotate();
-                    setTimeout(startAutoRotate, 10000);
-                });
-            });
-        });
-        
-        // Atualiza a seção atual
-        function updateSection(section) {
-            currentSection = section;
-            const sectionData = sections[section];
-            
-            // Animação de transição
-            currentTitle.classList.remove('fade-in');
-            currentDescription.classList.remove('fade-in');
-            imageCaption.classList.remove('fade-in');
-            
-            setTimeout(() => {
-                currentTitle.textContent = sectionData.title;
-                currentDescription.textContent = sectionData.description;
                 
-                currentTitle.classList.add('fade-in');
-                currentDescription.classList.add('fade-in');
-            }, 100);
-            
-            // Atualiza mini galeria
-            galleryItems.forEach((item, index) => {
-                const imgSrc = sectionData.images[index].src;
-                const imgAlt = sectionData.images[index].alt;
-                item.querySelector('img').src = imgSrc;
-                item.querySelector('img').alt = imgAlt;
-            });
-            
-            // Reset para primeira imagem
-            currentImageIndex = 0;
-            updateCurrentImage();
-            
-            // Atualiza estados ativos da galeria
-            resetGalleryActiveStates();
-            galleryItems[0].classList.add('active');
-            
-            // Reinicia rotação automática
-            stopAutoRotate();
-            startAutoRotate();
-        }
-        
-        // Atualiza a imagem principal
-        function updateCurrentImage() {
-            const currentImageData = sections[currentSection].images[currentImageIndex];
-            
-            mainImage.classList.add('fade-in');
-            setTimeout(() => {
-                mainImage.src = currentImageData.src;
-                mainImage.alt = currentImageData.alt;
-            }, 100);
-            
-            // Atualiza legenda com animação
-            imageCaption.classList.remove('fade-in');
-            setTimeout(() => {
-                imageCaption.textContent = currentImageData.caption;
-                imageCaption.classList.add('fade-in');
-            }, 100);
-            
-            // Atualização suave da imagem
-            setTimeout(() => {
-                mainImage.classList.remove('fade-in');
-            }, 300);
-            
-            // Atualiza imagem de fundo
-            document.querySelector('.background-image').style.backgroundImage = `url('${currentImageData.src}')`;
-        }
-        
-        // Rotação automática de imagens
-        function startAutoRotate() {
-            stopAutoRotate();
-            autoRotateInterval = setInterval(() => {
-                currentImageIndex = (currentImageIndex + 1) % sections[currentSection].images.length;
-                updateCurrentImage();
-                resetGalleryActiveStates();
-                galleryItems[currentImageIndex].classList.add('active');
-            }, 6000);
-        }
-        
-        function stopAutoRotate() {
-            if (autoRotateInterval) {
-                clearInterval(autoRotateInterval);
+                // Oculta todas as seções e mostra apenas a selecionada
+                contentSections.forEach(section => {
+                    section.classList.add('hidden-section');
+                    if (section.id === `${sectionId}-section`) {
+                        section.classList.remove('hidden-section');
+                    }
+                });
             }
-        }
-        
-        function resetGalleryActiveStates() {
-            galleryItems.forEach(item => item.classList.remove('active'));
-        }
+            
+            // Função para iniciar rotação automática
+            function startAutoRotation(sectionId) {
+                stopAutoRotation(sectionId);
+                
+                const gallery = document.querySelector(`#${sectionId}-section .mobile-gallery`);
+                if (!gallery || gallery.querySelectorAll('.gallery-item').length < 2) return;
+                
+                const intervalId = setInterval(() => {
+                    const items = gallery.querySelectorAll('.gallery-item');
+                    const activeItem = gallery.querySelector('.gallery-item.active');
+                    let nextIndex = 0;
+                    
+                    if (activeItem) {
+                        const currentIndex = parseInt(activeItem.getAttribute('data-index'));
+                        nextIndex = (currentIndex + 1) % items.length;
+                        activeItem.classList.remove('active');
+                    }
+                    
+                    items[nextIndex].classList.add('active');
+                    
+                    // Atualiza a imagem principal
+                    const mainImage = document.getElementById(`${sectionId}-main-image`);
+                    const caption = document.getElementById(`${sectionId}-caption`);
+                    
+                    if (mainImage && caption) {
+                        mainImage.src = items[nextIndex].querySelector('img').src;
+                        mainImage.alt = items[nextIndex].querySelector('img').alt;
+                    }
+                }, 5000); // Troca a cada 5 segundos
+                
+                // Armazena o ID do intervalo para poder parar depois
+                gallery.dataset.rotationInterval = intervalId;
+            }
+            
+            // Função para parar a rotação automática
+            function stopAutoRotation(sectionId) {
+                const gallery = document.querySelector(`#${sectionId}-section .mobile-gallery`);
+                if (gallery && gallery.dataset.rotationInterval) {
+                    clearInterval(parseInt(gallery.dataset.rotationInterval));
+                }
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
