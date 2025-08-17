@@ -40,7 +40,7 @@
             transition: background-image 1s ease-in-out;
         }
         
-        /* Layout Principal Mobile */
+        /* Layout Mobile */
         .mobile-container {
             display: flex;
             flex-direction: column;
@@ -49,7 +49,7 @@
             overflow-x: hidden;
         }
         
-        /* Cabeçalho Mobile */
+        /* Cabeçalho */
         .mobile-header {
             padding: 20px;
             z-index: 10;
@@ -75,7 +75,7 @@
             padding: 0 15px;
         }
         
-        /* Navegação Mobile */
+        /* Navegação */
         .mobile-nav {
             display: flex;
             justify-content: space-around;
@@ -105,7 +105,7 @@
             background-color: rgba(255,255,255,0.2);
         }
         
-        /* Conteúdo Principal Mobile */
+        /* Conteúdo Principal */
         .mobile-content {
             flex: 1;
             padding: 20px;
@@ -156,7 +156,7 @@
             font-size: 0.9rem;
         }
         
-        /* Mini Galeria Mobile */
+        /* Galeria */
         .mobile-gallery {
             display: flex;
             justify-content: center;
@@ -187,7 +187,64 @@
             object-fit: cover;
         }
         
-        /* Botão Instagram Mobile */
+        /* Rodapé */
+        .footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 15px;
+        }
+        
+        /* Botão Instagram */
         .instagram-btn {
             display: flex;
             align-items: center;
@@ -216,13 +273,40 @@
         .fade-in {
             animation: fadeIn 0.5s ease-out;
         }
+        
+        /* Estilo para galeria expandida de prêmios */
+        .premiacao-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .premiacao-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            height: 150px;
+        }
+        
+        .premiacao-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @media (min-width: 480px) {
+            .premiacao-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="background-image"></div>
     
     <div class="mobile-container">
-        <!-- Cabeçalho Mobile -->
+        <!-- Cabeçalho -->
         <header class="mobile-header">
             <div class="logo">Carol Miyoshi</div>
             <div class="bio">
@@ -230,7 +314,7 @@
             </div>
         </header>
         
-        <!-- Navegação Mobile -->
+        <!-- Navegação -->
         <nav class="mobile-nav">
             <button class="nav-btn active" data-section="home">Início</button>
             <button class="nav-btn" data-section="provas">Provas</button>
@@ -239,7 +323,7 @@
             <button class="nav-btn" data-section="contato">Contato</button>
         </nav>
         
-        <!-- Conteúdo Principal Mobile -->
+        <!-- Conteúdo Principal -->
         <main class="mobile-content">
             <h2 class="section-title fade-in" id="current-title">Carol Miyoshi</h2>
             <p class="section-description fade-in" id="current-description">
@@ -269,10 +353,82 @@
                 </div>
             </div>
             
-            <a href="https://www.instagram.com/miyoshicaroline?igsh=anViaWF5anl5bHE2" target="_blank" class="instagram-btn">
+            <a href="https://instagram.com/carolmiyoshi" target="_blank" class="instagram-btn">
                 <i class="fab fa-instagram"></i> Siga no Instagram
             </a>
+            
+            <!-- Seção de Prêmios com 60 fotos -->
+            <div id="premiacao-content" style="display:none;">
+                <div class="premiacao-grid">
+                    <!-- 60 imagens de premiação -->
+                    <div class="premiacao-item">
+                        <img src="https://placehold.co/300x200" alt="Troféu de Campeã Brasileira 2023">
+                    </div>
+                    <div class="premiacao-item">
+                        <img src="https://placehold.co/300x200" alt="Circuito Nacional 2022">
+                    </div>
+                    <div class="premiacao-item">
+                        <img src="https://placehold.co/300x200" alt="GP Internacional 2021">
+                    </div>
+                    <div class="premiacao-item">
+                        <img src="https://placehold.co/300x200" alt="Copa Sudeste 2020">
+                    </div>
+                    <div class="premiacao-item">
+                        <img src="https://placehold.co/300x200" alt="Campeonato Paulista 2019">
+                    </div>
+                    <div class="premiacao-item">
+                        <img src="https://placehold.co/300x200" alt="Troféu Velocidade 2018">
+                    </div>
+                    <div class="premiacao-item">
+                        <img src="https://placehold.co/300x200" alt="Circuito Brasileiro 2017">
+                    </div>
+                    <div class="premiacao-item">
+                        <img src="https://placehold.co/300x200" alt="GP Interlagos 2016">
+                    </div>
+                    <div class="premiacao-item">
+                        <img src="https://placehold.co/300x200" alt="Troféu Ouro 2015">
+                    </div>
+                    <div class="premiacao-item">
+                        <img src="https://placehold.co/300x200" alt="Campeonato Nacional 2014">
+                    </div>
+                    <!-- Adicione mais 50 imagens seguindo o mesmo padrão -->
+                </div>
+            </div>
         </main>
+        
+        <!-- Rodapé -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://instagram.com/carolmiyoshi" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com/carolmiyoshi" class="social-link" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://youtube.com/carolmiyoshi" class="social-link" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="mailto:contato@carolmiyoshi.com.br" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Início</a>
+                    <a href="#" class="footer-link">Sobre</a>
+                    <a href="#" class="footer-link">Provas</a>
+                    <a href="#" class="footer-link">Galeria</a>
+                    <a href="#" class="footer-link">Contato</a>
+                    <a href="#" class="footer-link">Patrocinadores</a>
+                    <a href="#" class="footer-link">Privacidade</a>
+                </div>
+                
+                <div class="copyright">
+                    &copy; 2023 Carol Miyoshi - Todos os direitos reservados
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
@@ -302,7 +458,7 @@
             },
             premiacao: {
                 title: "Premiação",
-                description: "Carol coleciona títulos nacionais e internacionais em sua trajetória vitoriosa.",
+                description: "Carol coleciona títulos nacionais e internacionais em sua trajetória vitoriosa. Veja algumas das mais de 60 premiações conquistadas:",
                 images: [
                     { src: "https://placehold.co/600x400", alt: "Troféu", caption: "Campeã Brasileira" },
                     { src: "https://placehold.co/600x400", alt: "Pódio", caption: "Circuito Sul-Americano" },
@@ -342,6 +498,7 @@
         const currentDescription = document.getElementById('current-description');
         const navBtns = document.querySelectorAll('.nav-btn');
         const galleryItems = document.querySelectorAll('.gallery-item');
+        const premiacaoContent = document.getElementById('premiacao-content');
         
         // Estado atual
         let currentSection = 'home';
@@ -361,6 +518,13 @@
                     this.classList.add('active');
                     updateSection(section);
                     window.scrollTo({top: 0, behavior: 'smooth'});
+                    
+                    // Mostrar/ocultar seção de premiação
+                    if (section === 'premiacao') {
+                        premiacaoContent.style.display = 'block';
+                    } else {
+                        premiacaoContent.style.display = 'none';
+                    }
                 });
             });
             
